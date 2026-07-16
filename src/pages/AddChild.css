@@ -1,0 +1,382 @@
+/* AddChild.css */
+
+/* ===========================
+   HEADER
+=========================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: rgba(26, 29, 38, 0.92);
+  }
+}
+
+.back-btn {
+  color: var(--text-primary);
+  font-size: 20px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.back-btn:hover {
+  color: var(--primary);
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-icon {
+  color: var(--primary);
+  font-size: 22px;
+}
+
+.header-title {
+  font-weight: var(--fw-bold);
+  font-size: var(--font-lg);
+  color: var(--text-primary);
+}
+
+.header-placeholder {
+  width: 28px;
+}
+
+/* ===========================
+   PAGE
+=========================== */
+.page {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 130px;
+}
+
+/* ===========================
+   ADD CHILD FORM
+=========================== */
+.add-child-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===========================
+   PHOTO UPLOAD SECTION
+=========================== */
+.photo-upload-section {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.photo-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+  box-shadow: 0 4px 12px rgba(79, 124, 255, 0.2);
+}
+
+.photo-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--surface-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed var(--border);
+}
+
+.placeholder-icon {
+  font-size: 64px;
+  color: var(--text-muted);
+}
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius-round);
+  font-size: var(--font-sm);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.upload-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 124, 255, 0.3);
+}
+
+.upload-btn svg {
+  font-size: 16px;
+}
+
+/* ===========================
+   FORM FIELDS
+=========================== */
+.form-fields {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+}
+
+.input-icon {
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.form-group .input {
+  width: 100%;
+  height: 50px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0 15px;
+  color: var(--text-primary);
+  font-size: var(--font-md);
+  transition: var(--transition);
+}
+
+.form-group .input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.1);
+}
+
+.form-group .input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===========================
+   GENDER OPTIONS
+=========================== */
+.gender-options {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.gender-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+}
+
+.gender-option input[type="radio"] {
+  display: none;
+}
+
+.gender-option.active {
+  border-color: var(--primary);
+  background: rgba(79, 124, 255, 0.05);
+  color: var(--primary);
+}
+
+.gender-option:hover {
+  border-color: var(--primary-light);
+}
+
+.gender-icon {
+  font-size: 20px;
+}
+
+.gender-icon.male {
+  color: #4F7CFF;
+}
+
+.gender-icon.female {
+  color: #FF6B9D;
+}
+
+.gender-option.active .gender-icon.male {
+  color: var(--primary);
+}
+
+.gender-option.active .gender-icon.female {
+  color: #FF6B9D;
+}
+
+/* ===========================
+   SAVE BUTTON
+=========================== */
+.save-btn {
+  width: 100%;
+  height: 52px;
+  font-size: var(--font-md);
+  border-radius: var(--radius-md);
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 124, 255, 0.3);
+}
+
+/* ===========================
+   BOTTOM NAVIGATION
+=========================== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 8px 0 12px;
+  height: var(--bottom-nav-height);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+  z-index: 101;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bottom-nav {
+    background: rgba(26, 29, 38, 0.92);
+  }
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  transition: var(--transition);
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+.nav-item .nav-icon {
+  font-size: 20px;
+  transition: var(--transition);
+}
+
+.nav-item span {
+  font-size: 10px;
+  font-weight: var(--fw-medium);
+}
+
+.nav-item.active {
+  color: var(--primary);
+}
+
+.nav-item.active .nav-icon {
+  transform: scale(1.05);
+}
+
+.nav-item:hover {
+  color: var(--primary);
+}
+
+/* ===========================
+   RESPONSIVE (TABLET)
+=========================== */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .app {
+    max-width: 600px;
+  }
+
+  .header {
+    padding: 16px 24px;
+  }
+
+  .page {
+    padding: 20px 24px 130px;
+  }
+
+  .profile-photo,
+  .photo-placeholder {
+    width: 150px;
+    height: 150px;
+  }
+
+  .placeholder-icon {
+    font-size: 80px;
+  }
+
+  .form-fields {
+    padding: 24px;
+  }
+
+  .gender-option {
+    padding: 14px;
+    font-size: var(--font-md);
+  }
+
+  .save-btn {
+    height: 56px;
+    font-size: var(--font-lg);
+  }
+
+  .bottom-nav {
+    max-width: 600px;
+    padding: 10px 0 14px;
+  }
+
+  .nav-item .nav-icon {
+    font-size: 22px;
+  }
+}

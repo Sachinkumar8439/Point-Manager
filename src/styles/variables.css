@@ -1,0 +1,254 @@
+/* ======================================================
+   FAMILY POINTS APP DESIGN SYSTEM
+======================================================*/
+
+:root {
+
+  /* ======================================
+      COLORS
+  ====================================== */
+
+  --primary: #4F7CFF;
+  --primary-light: #7FA2FF;
+  --primary-dark: #315DDF;
+
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+
+  --info: #06B6D4;
+
+  /* ======================================
+      BACKGROUND
+  ====================================== */
+
+  --background: #F6F7FB;
+
+  --surface: #FFFFFF;
+
+  --surface-secondary: #F2F4F8;
+
+  --card: #FFFFFF;
+
+  /* ======================================
+      TEXT
+  ====================================== */
+
+  --text-primary: #1F2937;
+
+  --text-secondary: #6B7280;
+
+  --text-muted: #9CA3AF;
+
+  --text-white: #FFFFFF;
+
+  /* ======================================
+      BORDER
+  ====================================== */
+
+  --border: #E5E7EB;
+
+  --divider: #ECECEC;
+
+  /* ======================================
+      SHADOW
+  ====================================== */
+
+  --shadow-xs:
+
+      0 1px 2px rgba(0,0,0,.05);
+
+  --shadow-sm:
+
+      0 2px 8px rgba(0,0,0,.06);
+
+  --shadow-md:
+
+      0 8px 20px rgba(0,0,0,.08);
+
+  --shadow-lg:
+
+      0 12px 32px rgba(0,0,0,.12);
+
+  /* ======================================
+      RADIUS
+  ====================================== */
+
+  --radius-xs:6px;
+
+  --radius-sm:10px;
+
+  --radius-md:16px;
+
+  --radius-lg:20px;
+
+  --radius-xl:28px;
+
+  --radius-round:999px;
+
+  /* ======================================
+      FONT
+  ====================================== */
+
+  --font-family:
+
+      "Inter",
+
+      system-ui,
+
+      sans-serif;
+
+  --font-xs:.70rem;
+
+  --font-sm:.82rem;
+
+  --font-md:.95rem;
+
+  --font-lg:1.05rem;
+
+  --font-xl:1.3rem;
+
+  --font-2xl:1.6rem;
+
+  --font-3xl:2rem;
+
+  /* ======================================
+      FONT WEIGHT
+  ====================================== */
+
+  --fw-regular:400;
+
+  --fw-medium:500;
+
+  --fw-semibold:600;
+
+  --fw-bold:700;
+
+  /* ======================================
+      SPACING
+  ====================================== */
+
+  --space-1:4px;
+
+  --space-2:8px;
+
+  --space-3:12px;
+
+  --space-4:16px;
+
+  --space-5:20px;
+
+  --space-6:24px;
+
+  --space-7:28px;
+
+  --space-8:32px;
+
+  --space-9:40px;
+
+  --space-10:48px;
+
+  /* ======================================
+      HEADER
+  ====================================== */
+
+  --header-height:70px;
+
+  --bottom-nav-height:74px;
+
+  /* ======================================
+      ICON
+  ====================================== */
+
+  --icon-xs:16px;
+
+  --icon-sm:20px;
+
+  --icon-md:24px;
+
+  --icon-lg:30px;
+
+  --icon-xl:36px;
+
+  /* ======================================
+      IMAGE
+  ====================================== */
+
+  --avatar-sm:42px;
+
+  --avatar-md:56px;
+
+  --avatar-lg:72px;
+
+  --avatar-xl:100px;
+
+  /* ======================================
+      BUTTON
+  ====================================== */
+
+  --button-height:48px;
+
+  --button-radius:14px;
+
+  /* ======================================
+      INPUT
+  ====================================== */
+
+  --input-height:50px;
+
+  /* ======================================
+      ANIMATION
+  ====================================== */
+
+  --transition-fast:.15s ease;
+
+  --transition:.25s ease;
+
+  --transition-slow:.35s ease;
+
+}
+
+/* ======================================================
+   DARK MODE
+======================================================*/
+
+@media (prefers-color-scheme: darks){
+
+:root{
+
+  --background:#0F1117;
+
+  --surface:#1A1D26;
+
+  --surface-secondary:#222733;
+
+  --card:#1A1D26;
+
+  --text-primary:#F8FAFC;
+
+  --text-secondary:#CBD5E1;
+
+  --text-muted:#94A3B8;
+
+  --border:#2B3242;
+
+  --divider:#2B3242;
+
+  --shadow-xs:
+
+      0 1px 3px rgba(0,0,0,.45);
+
+  --shadow-sm:
+
+      0 4px 12px rgba(0,0,0,.45);
+
+  --shadow-md:
+
+      0 10px 25px rgba(0,0,0,.55);
+
+  --shadow-lg:
+
+      0 15px 40px rgba(0,0,0,.65);
+
+}
+}
