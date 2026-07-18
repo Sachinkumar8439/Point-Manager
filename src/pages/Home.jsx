@@ -103,7 +103,7 @@ const Home = ({ setmember }) => {
         </div>
 
         {/* Leaderboard Preview */}
-        <div className="leaderboard-preview">
+        {/* <div className="leaderboard-preview">
           <div className="section-header">
             <FaCrown className="section-icon" />
             <h3>Top Performers</h3>
@@ -132,7 +132,7 @@ const Home = ({ setmember }) => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* All Members Grid */}
         <div className="members-section">

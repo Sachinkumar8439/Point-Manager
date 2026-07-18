@@ -160,6 +160,8 @@
   font-weight: var(--fw-semibold);
   color: white;
   transition: var(--transition);
+  border: none;
+  cursor: pointer;
 }
 
 .quick-action-btn.add-points {
@@ -239,7 +241,6 @@
 
 .leaderboard-item:hover {
   background: var(--border);
-  transform: translateX(4px);
 }
 
 .rank-badge {
@@ -328,7 +329,6 @@
 
 .member-card:hover {
   background: var(--border);
-  transform: translateX(4px);
 }
 
 .member-avatar-wrapper {

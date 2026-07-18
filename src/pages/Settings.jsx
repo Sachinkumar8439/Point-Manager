@@ -1,6 +1,6 @@
 // Settings.jsx
-import React from 'react';
-import { 
+import React, { useState } from "react";
+import {
   FaArrowLeft,
   FaUsers,
   FaTasks,
@@ -12,18 +12,23 @@ import {
   FaHome,
   FaUserPlus,
   FaChartBar,
-  FaCog
-} from 'react-icons/fa';
-import './Settings.css';
-
+  FaCog,
+} from "react-icons/fa";
+import "./Settings.css";
+import { downloadDatabaseBackup, importDatabase } from "../database/db";
 const Settings = () => {
+  const [textareavalue,settextareavalue]=useState("")
   const settingsItems = [
-    { icon: FaUsers, label: 'Manage Children', color: '#4F7CFF' },
-    { icon: FaTasks, label: 'Manage Common Tasks', color: '#22C55E' },
-    { icon: FaPlusCircle, label: 'Global Add / Deduct Points', color: '#F59E0B' },
-    { icon: FaDownload, label: 'Backup / Export Data', color: '#06B6D4' },
-    { icon: FaUpload, label: 'Import Data', color: '#8B5CF6' },
-    { icon: FaTrash, label: 'Clear All Data', color: '#EF4444' },
+    { icon: FaUsers, label: "Manage Children", color: "#4F7CFF" },
+    { icon: FaTasks, label: "Manage Common Tasks", color: "#22C55E" },
+    {
+      icon: FaPlusCircle,
+      label: "Global Add / Deduct Points",
+      color: "#F59E0B",
+    },
+    { icon: FaDownload, label: "Backup / Export Data", color: "#06B6D4" },
+    { icon: FaUpload, label: "Import Data", color: "#8B5CF6" },
+    { icon: FaTrash, label: "Clear All Data", color: "#EF4444" },
   ];
 
   return (
@@ -43,6 +48,18 @@ const Settings = () => {
       {/* Main Content */}
       <main className="page">
         <div className="settings-container">
+          <button onClick={downloadDatabaseBackup}>
+            export and download
+          </button>
+          <div>
+            <textarea value={textareavalue} onChange={(e)=> settextareavalue(e.target.value)}></textarea>
+            <button onClick={async ()=>{
+              const backup = JSON.parse(textareavalue);
+
+             await importDatabase(backup)
+            }
+            }>import db</button>
+          </div>
           {/* General Section */}
           <div className="settings-section">
             <h2 className="section-title">General</h2>
@@ -50,12 +67,15 @@ const Settings = () => {
               {settingsItems.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <button 
-                    key={index} 
-                    className={`settings-item ${index === settingsItems.length - 1 ? 'last' : ''}`}
+                  <button
+                    key={index}
+                    className={`settings-item ${index === settingsItems.length - 1 ? "last" : ""}`}
                   >
                     <div className="settings-item-left">
-                      <div className="settings-icon-wrapper" style={{ color: item.color }}>
+                      <div
+                        className="settings-icon-wrapper"
+                        style={{ color: item.color }}
+                      >
                         <Icon />
                       </div>
                       <span className="settings-label">{item.label}</span>
@@ -68,30 +88,6 @@ const Settings = () => {
           </div>
         </div>
       </main>
-
-      {/* Bottom Navigation */}
-      <nav className="bottom-nav">
-        <button className="nav-item">
-          <FaHome className="nav-icon" />
-          <span>Home</span>
-        </button>
-        <button className="nav-item">
-          <FaTasks className="nav-icon" />
-          <span>Tasks</span>
-        </button>
-        <button className="nav-item">
-          <FaUserPlus className="nav-icon" />
-          <span>Add Child</span>
-        </button>
-        <button className="nav-item">
-          <FaChartBar className="nav-icon" />
-          <span>Reports</span>
-        </button>
-        <button className="nav-item active">
-          <FaCog className="nav-icon" />
-          <span>Settings</span>
-        </button>
-      </nav>
     </div>
   );
 };

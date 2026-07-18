@@ -100,3 +100,97 @@ export async function getDB() {
 
   return dbInstance;
 }
+
+
+
+// ============================================
+// EXPORT DATABASE
+// ============================================
+
+export async function exportDatabase() {
+  const db = await getDB();
+
+  const backup = {
+    app: "Family Point Tracker",
+    dbName: DB_NAME,
+    dbVersion: DB_VERSION,
+    exportedAt: new Date().toISOString(),
+    stores: {},
+  };
+
+  for (const storeName of db.objectStoreNames) {
+    backup.stores[storeName] = await db.getAll(storeName);
+  }
+
+  return backup;
+}
+
+// ============================================
+// DOWNLOAD BACKUP
+// ============================================
+
+export async function downloadDatabaseBackup() {
+  const backup = await exportDatabase();
+
+  const blob = new Blob(
+    [JSON.stringify(backup, null, 2)],
+    {
+      type: "application/json",
+    }
+  );
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `family-point-backup-${Date.now()}.json`;
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+
+// ============================================
+// IMPORT DATABASE
+// ============================================
+
+export async function importDatabase(backup) {
+   console.log("BACKUP =>", backup);
+  console.log("BACKUP.STORES =>", backup?.stores);
+  const db = await getDB();
+
+  const storeNames = [...db.objectStoreNames];
+
+  const tx = db.transaction(storeNames, "readwrite");
+
+  // Clear existing data
+  for (const storeName of storeNames) {
+    await tx.objectStore(storeName).clear();
+  }
+
+  // Restore data
+  for (const storeName of Object.keys(backup.stores)) {
+    if (!db.objectStoreNames.contains(storeName)) continue;
+
+    const store = tx.objectStore(storeName);
+
+    for (const item of backup.stores[storeName]) {
+      await store.put(item);
+    }
+  }
+
+  await tx.done;
+
+  return true;
+}
+
+// ============================================
+// IMPORT FROM FILE
+// ============================================
+
+export async function importDatabaseFromFile(file) {
+  const text = await file.text();
+
+  const backup = JSON.parse(text);
+
+  await importDatabase(backup);
+}
