@@ -15,7 +15,7 @@ import {
   FaCog,
 } from "react-icons/fa";
 import "./Settings.css";
-import { downloadDatabaseBackup, importDatabase } from "../database/db";
+import { deleteDatabase, downloadDatabaseBackup, importDatabase } from "../database/db";
 const Settings = () => {
   const [textareavalue,settextareavalue]=useState("")
   const settingsItems = [
@@ -28,8 +28,27 @@ const Settings = () => {
     },
     { icon: FaDownload, label: "Backup / Export Data", color: "#06B6D4" },
     { icon: FaUpload, label: "Import Data", color: "#8B5CF6" },
-    { icon: FaTrash, label: "Clear All Data", color: "#EF4444" },
+    { icon: FaTrash, label: "Clear All Data", color: "#EF4444",
+      action: "clearData",
+     },
   ];
+
+  const handleSettingClick = async (action) => {
+    console.log("deleting database")
+  switch (action) {
+    case "clearData":
+      await deleteDatabase();
+      window.location.reload();
+      break;
+
+    case "export":
+      await downloadDatabaseBackup();
+      break;
+
+    default:
+      console.log("No action");
+  }
+};
 
   return (
     <div className="app">
@@ -68,6 +87,7 @@ const Settings = () => {
                 const Icon = item.icon;
                 return (
                   <button
+                  onClick={item.action ? () => handleSettingClick(item.action) : undefined}
                     key={index}
                     className={`settings-item ${index === settingsItems.length - 1 ? "last" : ""}`}
                   >

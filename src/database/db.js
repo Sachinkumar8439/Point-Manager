@@ -194,3 +194,30 @@ export async function importDatabaseFromFile(file) {
 
   await importDatabase(backup);
 }
+
+export async function deleteDatabase() {
+  if (dbInstance) {
+    dbInstance.close();
+    dbInstance = null;
+  }
+
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.deleteDatabase(DB_NAME);
+
+    request.onsuccess = () => {
+      console.log("✅ Database deleted successfully");
+      resolve(true);
+    };
+
+    request.onerror = () => {
+      console.error("❌ Failed to delete database", request.error);
+      reject(request.error);
+    };
+
+    request.onblocked = () => {
+      console.warn(
+        "⚠️ Database deletion blocked. Close all tabs using this app."
+      );
+    };
+  });
+}
